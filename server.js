@@ -2,18 +2,20 @@
 
 const express = require('express');
 const dotenv = require('dotenv');
-const userRoutes = require('./routes/userRoute')
+const authRoute = require('./routes/authRoute')
+const userRoute = require('./routes/userRoute')
 const app = express();
 
 require ('./db/connection')
 
 const PORT = process.env.port || 3200;
 
-app.use(express.json());
-app.use('/users', userRoutes);
+app.use(express.json()); //Middleware for parsing JSON bodies
+app.use('/users', userRoute);
+app.use('/api/auth', authRoute)
 
 app.get('/', (req, res) => {
-    res.send('Testing Port!');
+    res.send('Port is up and running!');
 })
 
 app.listen(PORT,() => {
