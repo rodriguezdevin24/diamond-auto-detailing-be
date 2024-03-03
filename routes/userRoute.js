@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-
+const verifyToken = require('../middleware/verifyToken');
 
 //Route for registering new user 
 router.post('/register', userController.createUser);
@@ -19,9 +19,6 @@ router.put('/:id', userController.updateUser)
 
 //Route for deleting user by ID
 router.delete('/:id', userController.deleteUser)
-
-
-//router.post('/login', userController.getUser);
 
 
 
