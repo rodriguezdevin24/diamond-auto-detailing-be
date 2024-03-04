@@ -33,6 +33,7 @@ exports.getAllPackages = async(req, res) => {
     }
 };
 
+
 //Get a packages by ID
 
 exports.getPackage = async(req, res) => {

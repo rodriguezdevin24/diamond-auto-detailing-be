@@ -11,10 +11,10 @@ router.get('/', packageController.getAllPackages);
 //Route for getting package by ID
 router.get('/:id', packageController.getPackage);
 
-//Route for updating a package by ID
+//Route for updating a package
 router.put('/:id', packageController.updatePackage);
 
-//Route for deleting package by ID
+//Route for deleting package
 router.delete('/:id', packageController.deletePackage)
 
 module.exports= router;

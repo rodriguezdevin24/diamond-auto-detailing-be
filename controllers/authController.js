@@ -49,6 +49,7 @@ exports.login = async (req, res) => {
 exports.logout = async (req, res) => {
   const { userId } = req.body;
 
+  
   try {
     //Find the user and invalidate the refresh token
     await User.findByIdAndUpdate(userId, { refreshToken: "" });
