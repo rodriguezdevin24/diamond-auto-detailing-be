@@ -1,6 +1,7 @@
 //Appointment.js
 
 const mongoose = require('mongoose');
+const TimeSlot = require('./TimeSlot');
 
 const appointmentSchema = new mongoose.Schema({
     user: {
@@ -11,6 +12,11 @@ const appointmentSchema = new mongoose.Schema({
     package: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Package',
+        required: true,
+    },
+    timeSlot: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'TimeSlot',
         required: true,
     },
     calendlyEventUri: {
@@ -38,6 +44,7 @@ const appointmentSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+
 });
 
 const Appointment = mongoose.model('Appointment', appointmentSchema);
