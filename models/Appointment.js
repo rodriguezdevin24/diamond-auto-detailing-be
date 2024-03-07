@@ -1,7 +1,9 @@
+//Appointment.js
+
 const mongoose = require('mongoose');
 
 const appointmentSchema = new mongoose.Schema({
-    users: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -18,6 +20,11 @@ const appointmentSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: true
+    },
+    status: {
+        type: String, 
+        enum: ['pending', 'confirmed', 'completed', 'cancelled'],
+        default: 'pending'
     },
     specialRequests: {
         type: String,

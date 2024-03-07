@@ -7,6 +7,7 @@ const User = require("../models/User");
 require("dotenv").config();
 
 //Login logic
+
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -44,22 +45,6 @@ exports.login = async (req, res) => {
   }
 };
 
-//Logout logic
-
-exports.logout = async (req, res) => {
-  const { userId } = req.body;
-
-  
-  try {
-    //Find the user and invalidate the refresh token
-    await User.findByIdAndUpdate(userId, { refreshToken: "" });
-
-    res.status(200).json({ message: "Logout successful!" });
-  } catch (error) {
-    res.status(500).json({ message: "Error during logout" });
-  }
-};
-
 
 //Refresh token logic
 
@@ -86,5 +71,23 @@ exports.refreshToken = async (req, res) => {
     res.json({ accessToken });
   } catch (error) {
     res.status(403).json({ message: "Invalid or expired refresh token" });
+  }
+};
+
+
+
+//Logout logic
+
+exports.logout = async (req, res) => {
+  const { userId } = req.body;
+
+
+  try {
+    //Find the user and invalidate the refresh token
+    await User.findByIdAndUpdate(userId, { refreshToken: "" });
+
+    res.status(200).json({ message: "Logout successful!" });
+  } catch (error) {
+    res.status(500).json({ message: "Error during logout" });
   }
 };
